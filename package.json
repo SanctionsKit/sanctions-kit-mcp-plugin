@@ -1,0 +1,16 @@
+{
+  "name": "sanctionskit-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SanctionsKit documentation, request validation, and sandbox screening for Codex, Claude Code, and Cursor.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Adam <support@sanctionskit.com>",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test",
+    "check": "npm run validate && npm test",
+    "smoke": "node scripts/smoke.mjs"
+  }
+}
