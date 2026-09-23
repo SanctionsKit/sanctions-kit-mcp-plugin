@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sanctionskit": {
+      "url": "https://www.sanctionskit.com/mcp",
+      "auth": {
+        "CLIENT_ID": "sanctionskit-cursor",
+        "scopes": ["sources:read", "screenings:write", "results:read", "usage:read"]
+      }
+    }
+  }
+}

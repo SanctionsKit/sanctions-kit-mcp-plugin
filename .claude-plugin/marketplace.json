@@ -1,0 +1,19 @@
+{
+  "name": "sanctionskit",
+  "owner": {
+    "name": "SanctionsKit, LLC",
+    "email": "support@sanctionskit.com"
+  },
+  "plugins": [
+    {
+      "name": "sanctionskit",
+      "source": "./plugins/sanctionskit",
+      "description": "Build and test SanctionsKit API integrations.",
+      "author": {
+        "name": "Adam",
+        "email": "support@sanctionskit.com"
+      },
+      "license": "MIT"
+    }
+  ]
+}

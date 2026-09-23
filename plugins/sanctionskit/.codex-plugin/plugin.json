@@ -1,0 +1,53 @@
+{
+  "name": "sanctionskit",
+  "version": "0.1.0",
+  "description": "Build SanctionsKit API integrations with documentation, request validation, and synthetic sandbox screening.",
+  "author": {
+    "name": "Adam",
+    "email": "support@sanctionskit.com",
+    "url": "https://www.sanctionskit.com"
+  },
+  "homepage": "https://www.sanctionskit.com/resources/mcp",
+  "keywords": [
+    "sanctionskit",
+    "api",
+    "screening",
+    "developer-tools",
+    "sandbox"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SanctionsKit",
+    "shortDescription": "Build and test SanctionsKit API integrations.",
+    "longDescription": "Find SanctionsKit API documentation, inspect request schemas, and validate integration payloads. Connect a SanctionsKit workspace to run invented sandbox examples, retrieve sandbox results, and inspect sandbox usage. Sandbox results describe synthetic records only. This plugin does not run production screening or make compliance decisions.",
+    "developerName": "SanctionsKit, LLC",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://www.sanctionskit.com",
+    "privacyPolicyURL": "https://www.sanctionskit.com/privacy",
+    "termsOfServiceURL": "https://www.sanctionskit.com/terms",
+    "brandColor": "#3E86FD",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "defaultPrompt": [
+      "Help me add SanctionsKit screening to my app.",
+      "Validate my SanctionsKit screening request.",
+      "Run a synthetic SanctionsKit sandbox example."
+    ]
+  },
+  "mcpServers": {
+    "sanctionskit": {
+      "type": "http",
+      "url": "https://www.sanctionskit.com/mcp",
+      "oauth": {
+        "clientId": "sanctionskit-codex",
+        "callbackUrl": "http://127.0.0.1:43127/callback",
+        "callbackPort": 43127
+      }
+    }
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sanctionskit": {
+      "type": "http",
+      "url": "https://www.sanctionskit.com/mcp",
+      "oauth": {
+        "clientId": "sanctionskit-claude-code",
+        "callbackPort": 43128
+      }
+    }
+  }
+}
