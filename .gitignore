@@ -3,6 +3,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+.mcpregistry_*
 *.log
 *.pem
 *.key

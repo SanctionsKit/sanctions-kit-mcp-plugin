@@ -19,6 +19,16 @@ Clone this repository and open its directory. Install with the instructions for 
 
 Documentation, schemas, and request validation work without a SanctionsKit account. Sandbox account tools require a connection to a SanctionsKit workspace. Each client's OAuth registration must be configured on the hosted service; see [authentication setup](docs/authentication.md).
 
+### Connect to the hosted MCP server
+
+You can also connect directly from an MCP client using **Streamable HTTP** at:
+
+```text
+https://www.sanctionskit.com/mcp
+```
+
+Public documentation, schema, and validation tools need no credentials. For sandbox account tools, sign in through the client's OAuth connection flow after its client ID and callback have been registered with SanctionsKit. The requested scopes are `sources:read`, `screenings:write`, `results:read`, and `usage:read`. See [authentication setup](docs/authentication.md) for client configuration and verification status.
+
 ### Codex
 
 From the repository root:
