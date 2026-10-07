@@ -128,4 +128,4 @@ tests/                 Offline verification
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for changes and [the release guide](docs/releasing.md) for publishing.
 
-Maintained by Adam for **SanctionsKit, LLC**. For help, contact [support@sanctionskit.com](mailto:support@sanctionskit.com). The MIT license covers this repository; hosted service use is governed by the [SanctionsKit terms](https://www.sanctionskit.com/terms) and [privacy policy](https://www.sanctionskit.com/privacy).
+Maintained by SanctionsKit, LLC. For help, contact [support@sanctionskit.com](mailto:support@sanctionskit.com). The MIT license covers this repository; hosted service use is governed by the [SanctionsKit terms](https://www.sanctionskit.com/terms) and [privacy policy](https://www.sanctionskit.com/privacy).

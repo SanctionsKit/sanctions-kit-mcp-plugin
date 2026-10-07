@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Build SanctionsKit API integrations with documentation, request validation, and synthetic sandbox screening.",
   "author": {
-    "name": "Adam",
+    "name": "SanctionsKit",
     "email": "support@sanctionskit.com",
     "url": "https://www.sanctionskit.com"
   },

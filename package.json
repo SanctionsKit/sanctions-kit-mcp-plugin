@@ -5,7 +5,7 @@
   "description": "SanctionsKit documentation, request validation, and sandbox screening for Codex, Claude Code, and Cursor.",
   "type": "module",
   "license": "MIT",
-  "author": "Adam <support@sanctionskit.com>",
+  "author": "SanctionsKit <support@sanctionskit.com>",
   "engines": { "node": ">=22" },
   "scripts": {
     "validate": "node scripts/validate.mjs",
