@@ -10,7 +10,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function fixture(t) {
   const target = mkdtempSync(path.join(os.tmpdir(), 'sanctionskit-package-'));
-  for (const entry of ['plugins', '.agents', '.claude-plugin', '.cursor-plugin', 'package.json', 'package-lock.json', 'LICENSE']) {
+  for (const entry of ['plugins', '.agents', '.claude-plugin', '.cursor-plugin', 'package.json', 'package-lock.json', 'gemini-extension.json', 'LICENSE']) {
     cpSync(path.join(root, entry), path.join(target, entry), { recursive: true });
   }
   t.after(() => rmSync(target, { recursive: true, force: true }));
@@ -32,6 +32,26 @@ test('rejects version drift between clients', (t) => {
   const dir = fixture(t);
   change(dir, 'plugins/sanctionskit/.cursor-plugin/plugin.json', (data) => { data.version = '9.9.9'; });
   assert.ok(validate(dir).some((issue) => issue.includes('cursor-plugin/plugin.json: version differs')));
+});
+
+test('rejects a Gemini configuration that exposes account tools', (t) => {
+  const dir = fixture(t);
+  change(dir, 'gemini-extension.json', (data) => {
+    data.mcpServers.sanctionskit.includeTools.push('run_sandbox_screening');
+  });
+  assert.ok(validate(dir).some((issue) => issue.includes('Gemini: allow exactly')));
+  change(dir, 'gemini-extension.json', (data) => {
+    delete data.mcpServers.sanctionskit.includeTools;
+  });
+  assert.ok(validate(dir).some((issue) => issue.includes('Gemini: allow exactly')));
+});
+
+test('rejects credentials in the public Gemini extension', (t) => {
+  const dir = fixture(t);
+  change(dir, 'gemini-extension.json', (data) => {
+    data.mcpServers.sanctionskit.headers = { Authorization: 'Bearer example-not-a-token' };
+  });
+  assert.ok(validate(dir).some((issue) => issue.includes('Gemini: public extension must not configure')));
 });
 
 test('rejects malformed bundled examples', (t) => {

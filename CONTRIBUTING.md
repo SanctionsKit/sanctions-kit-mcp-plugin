@@ -9,9 +9,9 @@ npm ci
 npm run check
 ```
 
-When changing connection behavior, also run `npm run smoke` and test sign-in in the affected client. The smoke check exercises public operations only. Record what you actually tested in the pull request.
+When changing connection behavior, also run `npm run smoke`. For clients configured with account tools, test sign-in in the affected client; for the public-only Gemini extension, verify the four-tool allowlist without SanctionsKit sign-in. The smoke check exercises public operations only. Record what you actually tested in the pull request.
 
-Keep plugin versions consistent across `package.json` and the three client manifests. Check paths from the installable plugin root, since hosts copy that directory when installing. Match tool names and examples to the published MCP schema.
+Keep versions consistent across `package.json`, the three plugin manifests, and `gemini-extension.json`. Check paths from the installable plugin root, since hosts copy that directory when installing. Match tool names and examples to the published MCP schema. The Gemini extension exposes public tools only; do not add account tools or credentials to its configuration.
 
 Use invented subjects in examples and tests. Keep credentials, customer information, saved results, and local configuration out of patches and issue reports. Report security concerns privately using [SECURITY.md](SECURITY.md).
 
