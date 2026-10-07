@@ -1,0 +1,16 @@
+{
+  "name": "sanctionskit",
+  "version": "0.1.0",
+  "description": "Find SanctionsKit API documentation and schemas, and validate request structure without submitting screenings.",
+  "mcpServers": {
+    "sanctionskit": {
+      "httpUrl": "https://www.sanctionskit.com/mcp",
+      "includeTools": [
+        "search_docs",
+        "get_doc",
+        "get_api_schema",
+        "validate_screening_request"
+      ]
+    }
+  }
+}

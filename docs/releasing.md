@@ -8,15 +8,21 @@ Install from that public GitHub URL using the README instructions and confirm th
 
 ## Release checks
 
-1. Update the version in `package.json`, its lockfile, and the Codex, Claude Code, and Cursor manifests together.
+1. Update the version in `package.json`, its lockfile, the Codex, Claude Code, and Cursor manifests, and `gemini-extension.json` together.
 2. Run `npm ci` and `npm run check` from a clean checkout.
 3. Run `npm run smoke` against the public service.
-4. Install the package in each client being advertised. Test public documentation, interactive sign-in, one intended synthetic screening, retrieval, and usage. A screening uses sandbox allowance and may create a review case. Never use customer inputs for these checks.
+4. Install the package in each client being advertised. Test public documentation. For clients configured with account tools, also test interactive sign-in, one intended synthetic screening, retrieval, and usage. A screening uses sandbox allowance and may create a review case. Never use customer inputs for these checks. The Gemini extension exposes only four public tools: verify that exact tool set and request validation without signing in to SanctionsKit or submitting screenings.
 5. Confirm client IDs and callbacks are registered as described in [authentication.md](authentication.md). Record untested clients or blocked account flows in the release notes.
 6. Move the completed changes from “Unreleased” to the new version in `CHANGELOG.md`, using the actual release date.
 7. Commit the release, tag that commit with its version, and create the GitHub release from that tag. Include the checks performed and any remaining limitations.
 
 Keep credentials and local diagnostic output out of source archives. The installable folder can be copied on its own; its manifests reference only files inside that folder.
+
+## Gemini CLI gallery
+
+The [Gemini CLI gallery](https://geminicli.com/docs/extensions/releasing/) discovers public GitHub repositories with a root `gemini-extension.json` and the `gemini-cli-extension` repository topic. After validating and publishing this extension, add that topic to this repository without removing its existing topics. Google describes a daily crawl subject to validation; publishing the manifest or setting the topic is not proof that a gallery listing is live.
+
+The Gemini installation uses the repository root. The nested `plugins/sanctionskit` directory alone does not contain the Gemini manifest. The gallery links to the public source repository; it does not imply Google endorsement.
 
 ## MCP Registry metadata
 

@@ -34,6 +34,22 @@ export function validate(root = repository) {
   const lock = json('package-lock.json');
   check(lock.version === pkg.version && lock.packages?.['']?.version === pkg.version,
     'package-lock.json: version differs from package.json');
+  const gemini = json('gemini-extension.json');
+  check(gemini.name === 'sanctionskit', 'Gemini: wrong extension name');
+  check(gemini.version === pkg.version, 'Gemini: version differs from package.json');
+  check(typeof gemini.description === 'string' && gemini.description.length > 10,
+    'Gemini: missing description');
+  const geminiServer = gemini.mcpServers?.sanctionskit;
+  check(gemini.mcpServers && Object.keys(gemini.mcpServers).length === 1,
+    'Gemini: expected one MCP server');
+  check(geminiServer?.httpUrl === 'https://www.sanctionskit.com/mcp',
+    'Gemini: use the public Streamable HTTP endpoint');
+  check(geminiServer && Object.keys(geminiServer).every((key) => ['httpUrl', 'includeTools'].includes(key)) && !gemini.settings,
+    'Gemini: public extension must not configure credentials, OAuth, or local commands');
+  const publicTools = ['search_docs', 'get_doc', 'get_api_schema', 'validate_screening_request'];
+  check(Array.isArray(geminiServer?.includeTools) && geminiServer.includeTools.length === publicTools.length &&
+    publicTools.every((tool) => geminiServer.includeTools.includes(tool)),
+  'Gemini: allow exactly the four public tools');
   const bundle = 'plugins/sanctionskit';
   const bundleRoot = path.join(root, bundle);
   try {

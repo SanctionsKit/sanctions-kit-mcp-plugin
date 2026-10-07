@@ -9,6 +9,8 @@ Build SanctionsKit integrations from your editor. Find API documentation, check 
 
 The plugin bundles the hosted [SanctionsKit MCP server](https://www.sanctionskit.com/resources/mcp) connection and an integration skill for **Codex, Claude Code, and Cursor**. There is no local server to run and no install script.
 
+A separate **Gemini CLI extension** connects to the four public documentation, schema, and request-validation tools. It requires no SanctionsKit account or API key and does not expose sandbox account tools.
+
 [Documentation](https://www.sanctionskit.com/docs) · [MCP guide](https://www.sanctionskit.com/guides/mcp-integration) · [Authentication](docs/authentication.md) · [MIT license](LICENSE)
 
 ## Get started
@@ -60,6 +62,22 @@ cp -R plugins/sanctionskit ~/.cursor/plugins/local/
 ```
 
 This command is for a first install; replace the existing `sanctionskit` folder when updating. Use a real copy, since Cursor skips external symlink targets. Team administrators can use **Import from Repo** in their team's plugin marketplace with this repository's GitHub URL. A public Cursor directory listing requires a separate submission.
+
+### Gemini CLI
+
+Install the extension from this repository:
+
+```sh
+gemini extensions install https://github.com/SanctionsKit/sanctions-kit-mcp-plugin
+```
+
+Restart Gemini CLI, then use `/mcp` to inspect the `sanctionskit` connection. Try:
+
+> Find the SanctionsKit screening request schema and validate an invented example without submitting it.
+
+The root `gemini-extension.json` uses Streamable HTTP and allows only `search_docs`, `get_doc`, `get_api_schema`, and `validate_screening_request`. It includes no credentials, OAuth configuration, local executable, or bundled context file. Request validation checks structure only; it does not submit a screening or check a real subject. Gemini CLI's own access requirements still apply.
+
+Sandbox screening and other account tools are not part of this extension. The integration skill bundled for the other clients is not installed by the Gemini extension. If you already configured a server named `sanctionskit` in Gemini's `settings.json`, that configuration takes precedence; remove or rename it if you intend to use this extension's public-tool configuration.
 
 ## What you can do
 
@@ -120,6 +138,7 @@ npm run smoke
 .agents/plugins/       Codex marketplace
 .claude-plugin/        Claude Code marketplace
 .cursor-plugin/        Cursor marketplace
+gemini-extension.json  Gemini CLI public-tool extension
 plugins/sanctionskit/  Installable plugin, client configs, skill, and assets
 docs/                  Authentication and release guidance
 scripts/               Package validation and public connection check
