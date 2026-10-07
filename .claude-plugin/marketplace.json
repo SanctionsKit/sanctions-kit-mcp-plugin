@@ -10,7 +10,7 @@
       "source": "./plugins/sanctionskit",
       "description": "Build and test SanctionsKit API integrations.",
       "author": {
-        "name": "Adam",
+        "name": "SanctionsKit",
         "email": "support@sanctionskit.com"
       },
       "license": "MIT"
