@@ -1,0 +1,16 @@
+{
+  "name": "sanctionskit",
+  "version": "0.1.0",
+  "description": "Build SanctionsKit sanctions screening API integrations with documentation, request validation, and synthetic sandbox workflows.",
+  "author": {
+    "name": "SanctionsKit LLC",
+    "email": "support@sanctionskit.com",
+    "url": "https://www.sanctionskit.com"
+  },
+  "homepage": "https://www.sanctionskit.com/resources/mcp",
+  "repository": "https://github.com/SanctionsKit/sanctions-kit-mcp-plugin",
+  "license": "MIT",
+  "keywords": ["sanctionskit", "sanctions-screening-api", "api-integration", "developer-tools"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

@@ -1,0 +1,21 @@
+{
+  "potentialMatch": {
+    "subject": { "name": "Alex Morgan", "entityType": "person", "birthDate": "1984" },
+    "package": "sandbox@1",
+    "retention": "standard"
+  },
+  "noMatch": {
+    "subject": { "name": "Juniper Example Cooperative", "entityType": "organization" },
+    "package": "sandbox@1",
+    "retention": "standard"
+  },
+  "identifierMatch": {
+    "subject": {
+      "name": "Example Horizon",
+      "entityType": "vessel",
+      "identifiers": [{ "type": "imo", "value": "0000001" }]
+    },
+    "package": "sandbox@1",
+    "retention": "standard"
+  }
+}

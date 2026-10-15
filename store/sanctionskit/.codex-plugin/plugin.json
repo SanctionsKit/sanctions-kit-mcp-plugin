@@ -1,0 +1,44 @@
+{
+  "name": "sanctionskit",
+  "version": "0.1.0",
+  "description": "Build SanctionsKit sanctions screening API integrations with current documentation, request validation, and synthetic sandbox workflows.",
+  "author": {
+    "name": "SanctionsKit LLC",
+    "email": "support@sanctionskit.com",
+    "url": "https://www.sanctionskit.com"
+  },
+  "homepage": "https://www.sanctionskit.com/resources/mcp",
+  "repository": "https://github.com/SanctionsKit/sanctions-kit-mcp-plugin",
+  "license": "MIT",
+  "keywords": [
+    "sanctionskit",
+    "sanctions-screening-api",
+    "api-integration",
+    "developer-tools"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SanctionsKit",
+    "shortDescription": "Build sanctions API workflows",
+    "longDescription": "Build integrations with the SanctionsKit sanctions screening API. Find current documentation, inspect request and response schemas, and validate request structure. Connect your SanctionsKit workspace to test invented subjects in the synthetic sandbox, retrieve retained sandbox results, and inspect source metadata and sandbox usage. Documentation, schema lookup, and request validation work without account linking. Account tools require a sandbox workspace connection. Sandbox results describe invented records only; this plugin does not search real sanctions records, screen real customers, or make compliance decisions.",
+    "developerName": "SanctionsKit LLC",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read API documentation",
+      "Validate request structure",
+      "Run synthetic sandbox workflows"
+    ],
+    "websiteURL": "https://www.sanctionskit.com/resources/mcp",
+    "privacyPolicyURL": "https://www.sanctionskit.com/privacy",
+    "termsOfServiceURL": "https://www.sanctionskit.com/terms",
+    "defaultPrompt": [
+      "Help me build a SanctionsKit sanctions screening API integration.",
+      "Validate an invented SanctionsKit sandbox request without submitting it.",
+      "Run an invented sandbox example, then explain its result and remaining allowance."
+    ],
+    "brandColor": "#3E86FD",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

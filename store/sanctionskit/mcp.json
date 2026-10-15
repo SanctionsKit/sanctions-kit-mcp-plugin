@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "sanctionskit": {
+      "type": "streamable-http",
+      "url": "https://www.sanctionskit.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "mixed",
+            "client": {
+              "mode": "provided",
+              "clientId": "sanctionskit-openai",
+              "tokenEndpointAuthMethod": "client_secret_post"
+            },
+            "resource": "https://www.sanctionskit.com/mcp",
+            "baseScopes": ["sources:read", "screenings:write", "results:read", "usage:read"]
+          }
+        }
+      }
+    }
+  }
+}

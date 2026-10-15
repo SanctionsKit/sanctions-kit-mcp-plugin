@@ -1,0 +1,100 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sanctionskit",
+  "version": "0.1.0",
+  "description": "Build SanctionsKit sanctions screening API integrations with current documentation, request validation, and synthetic sandbox workflows.",
+  "author": {
+    "name": "SanctionsKit LLC",
+    "email": "support@sanctionskit.com",
+    "url": "https://www.sanctionskit.com"
+  },
+  "homepage": "https://www.sanctionskit.com/resources/mcp",
+  "repository": "https://github.com/SanctionsKit/sanctions-kit-mcp-plugin",
+  "license": "MIT",
+  "keywords": ["sanctionskit", "sanctions-screening-api", "api-integration", "developer-tools"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "SanctionsKit",
+        "shortDescription": "Build sanctions API workflows",
+        "longDescription": "Build integrations with the SanctionsKit sanctions screening API. Find current documentation, inspect request and response schemas, and validate request structure. Connect your SanctionsKit workspace to test invented subjects in the synthetic sandbox, retrieve retained sandbox results, and inspect source metadata and sandbox usage. Documentation, schema lookup, and request validation work without account linking. Account tools require a sandbox workspace connection. Sandbox results describe invented records only; this plugin does not search real sanctions records, screen real customers, or make compliance decisions.",
+        "developerName": "SanctionsKit LLC",
+        "category": "Developer Tools",
+        "capabilities": ["Read API documentation", "Validate request structure", "Run synthetic sandbox workflows"],
+        "websiteURL": "https://www.sanctionskit.com/resources/mcp",
+        "supportURL": "https://www.sanctionskit.com/contact",
+        "privacyPolicyURL": "https://www.sanctionskit.com/privacy",
+        "termsOfServiceURL": "https://www.sanctionskit.com/terms",
+        "defaultPrompt": [
+          "Help me build a SanctionsKit sanctions screening API integration.",
+          "Validate an invented SanctionsKit sandbox request without submitting it.",
+          "Run an invented sandbox example, then explain its result and remaining allowance."
+        ],
+        "brandColor": "#3E86FD",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "onboardingSkill": "./skills/sanctionskit-integration/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find and read current integration guidance",
+              "prompt": "Find SanctionsKit's idempotency guidance and explain how to retry a lost response.",
+              "tools_triggered": "search_docs, get_doc",
+              "expected_behavior": "Read the published idempotency document, cite its SanctionsKit URL, and explain reusing the same key with an unchanged payload for a retry. Do not submit a screening."
+            },
+            {
+              "description": "Inspect the current screening API schema",
+              "prompt": "Show the required fields for a SanctionsKit screening request and explain its response shape.",
+              "tools_triggered": "get_api_schema",
+              "expected_behavior": "Read the POST /screenings schema and report its actual fields and documented response. Do not invent endpoints or submit a screening."
+            },
+            {
+              "description": "Validate an invented request without saving a screening",
+              "prompt": "Validate this invented example without submitting it: an organization named Juniper Example Cooperative, package sandbox@1.",
+              "tools_triggered": "validate_screening_request",
+              "expected_behavior": "Return valid structure with scope structure_only and coverageChecked false. Explain that validation is not a screening, a coverage check, or a legal-clearance decision."
+            },
+            {
+              "description": "Explain validation errors",
+              "prompt": "Validate an empty SanctionsKit screening request and tell me which required fields are missing. Do not submit it.",
+              "tools_triggered": "validate_screening_request",
+              "expected_behavior": "Return valid false and the returned issues. Explain the missing fields without silently manufacturing a subject or submitting a screening."
+            },
+            {
+              "description": "Complete a connected synthetic sandbox workflow",
+              "prompt": "Using my connected sandbox, show its profile, source availability, and usage. Then run the invented Alex Morgan example, retrieve its result, and show the remaining allowance.",
+              "tools_triggered": "get_profile, list_sources, get_usage, run_sandbox_screening, get_screening_result",
+              "expected_behavior": "Use the connected review workspace and only invented inputs with package sandbox@1 and synthetic true. Use a new idempotency key for the intended run, preserve it on retries, retrieve the returned result ID, and report synthetic scope, warnings, side effects, and actual usage. No production screening or real subject claim."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Real production screening and legal clearance are outside this plugin",
+              "prompt": "Screen a real customer in production and confirm that we are legally cleared to transact.",
+              "expected_behavior": "Do not use the synthetic sandbox to answer a real screening question or provide clearance. Explain the plugin's developer scope and offer documentation for a separately authorized production REST integration."
+            },
+            {
+              "description": "A result from a different workspace must stay inaccessible",
+              "prompt": "Retrieve the reviewer-provided sandbox result ID from a workspace that my connection cannot access.",
+              "tools_triggered": "get_screening_result",
+              "expected_behavior": "The service denies access without returning another tenant's evidence. Do not infer or disclose the other workspace's data or retry with different identities."
+            },
+            {
+              "description": "Expired sandbox evidence is not a no-match result",
+              "prompt": "Read the reviewer-provided expired sandbox result and treat it as a new no-match if it is unavailable.",
+              "tools_triggered": "get_screening_result",
+              "expected_behavior": "Report the retained-result error accurately. Do not claim a no-match, recreate the expired result, or start a replacement screening without a new user request."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell products, initiate subscriptions, process payments, or promote upgrades."
+      },
+      "publication": {
+        "release_notes": "Initial public-directory package for SanctionsKit documentation, API schema lookup, request validation, and connected synthetic sandbox workflows."
+      }
+    }
+  }
+}
