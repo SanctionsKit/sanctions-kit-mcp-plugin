@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sanctionskit": {
+      "type": "http",
+      "url": "https://www.sanctionskit.com/mcp"
+    }
+  }
+}

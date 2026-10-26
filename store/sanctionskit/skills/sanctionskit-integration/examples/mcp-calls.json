@@ -1,0 +1,38 @@
+[
+  {
+    "name": "search_docs",
+    "arguments": { "query": "idempotency", "limit": 3 }
+  },
+  {
+    "name": "get_api_schema",
+    "arguments": { "path": "/screenings", "method": "post" }
+  },
+  {
+    "name": "validate_screening_request",
+    "arguments": {
+      "request": {
+        "subject": { "name": "Alex Morgan", "entityType": "person", "birthDate": "1984" },
+        "package": "sandbox@1"
+      }
+    }
+  },
+  {
+    "name": "run_sandbox_screening",
+    "arguments": {
+      "request": {
+        "subject": { "name": "Alex Morgan", "entityType": "person", "birthDate": "1984" },
+        "package": "sandbox@1"
+      },
+      "idempotencyKey": "example-mcp-screen-0001",
+      "synthetic": true
+    }
+  },
+  {
+    "name": "get_usage",
+    "arguments": {}
+  },
+  {
+    "name": "get_profile",
+    "arguments": {}
+  }
+]
