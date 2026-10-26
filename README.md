@@ -5,6 +5,8 @@
 
 # SanctionsKit plugin
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/sanctionskit-sanctions-kit-mcp-plugin-1teu50?v=6237327da1e1638be988f38d20e4c792)](https://m8ven.ai/mcp/sanctionskit-sanctions-kit-mcp-plugin-1teu50?s=readme)
+
 Build SanctionsKit integrations from your editor. Find API documentation, check request formats, and test invented subjects against the sandbox.
 
 The plugin bundles the hosted [SanctionsKit MCP server](https://www.sanctionskit.com/resources/mcp) connection and an integration skill for **Codex, Claude Code, and Cursor**. There is no local server to run and no install script.
